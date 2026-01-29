@@ -3,11 +3,29 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowRight, Shield, Eye, Lock, Activity, CheckCircle2, FileCheck, Zap, Server, Code2, Workflow } from 'lucide-react'
+import {
+  ArrowRight,
+  Shield,
+  Eye,
+  Lock,
+  Activity,
+  CheckCircle2,
+  Zap,
+  Server,
+  Code2,
+  Workflow,
+  MessageSquare,
+  Search,
+  Layers,
+  Users,
+  Plus
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 
 export default function LandingPage() {
   const [mounted, setMounted] = useState(false)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -22,15 +40,15 @@ export default function LandingPage() {
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
             <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
-              <span className="text-black text-lg">K</span>
+              <span className="text-black text-lg font-bold">K</span>
             </div>
             Katyar
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Features</a>
-            <a href="#security" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Security</a>
+            <a href="#how-it-works" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">How it Works</a>
+            <a href="#use-cases" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Use Cases</a>
             <a href="#pricing" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Pricing</a>
-            <a href="https://github.com/KanurkarPrateek/nexas" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Docs</a>
           </div>
           <div className="flex items-center gap-4">
             <a href="https://github.com/KanurkarPrateek/nexas" className="hidden sm:block text-sm font-medium text-white hover:text-neutral-300 transition-colors">Star on GitHub</a>
@@ -44,43 +62,75 @@ export default function LandingPage() {
       <main>
         {/* Hero Section */}
         <section className="pt-32 pb-20 px-6 relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] pointer-events-none" />
+          {/* Background Effects */}
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] pointer-events-none" />
+          <div className="absolute -top-[25%] -left-[10%] w-[70%] h-[70%] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
 
           <div className="max-w-7xl mx-auto relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-4xl"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-neutral-300 mb-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-neutral-300 mb-8 hover:bg-white/10 transition-colors cursor-default"
+              >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                v1.0 is now available
-              </div>
+                <span className="bg-gradient-to-r from-neutral-200 to-neutral-400 bg-clip-text text-transparent">
+                  v1.0 is now available
+                </span>
+              </motion.div>
 
-              <h1 className="text-[56px] lg:text-[88px] font-bold leading-[1.05] tracking-tight mb-8">
-                Governance for the
+              <h1 className="text-[56px] lg:text-[88px] font-bold leading-[1.02] tracking-tighter mb-8">
+                Control what your AI agents
                 <br />
-                <span className="text-neutral-500">Agentic Era.</span>
+                <span className="bg-gradient-to-b from-neutral-400 to-neutral-600 bg-clip-text text-transparent">
+                  can do before they do it.
+                </span>
               </h1>
 
-              <p className="text-xl text-neutral-400 max-w-2xl mb-12 leading-relaxed">
-                The complete infrastructure for securing and governing autonomous AI agents.
-                Prevent prompt injection, enforce policies, and maintain compliance at scale.
+              <p className="text-xl text-neutral-400 max-w-2xl mb-12 leading-relaxed font-light">
+                Katyar is a security gateway for AI agents — authenticate, authorize, audit, and approve every action.
+                Run a secure, compliant AI agent infrastructure in <span className="text-white">3 lines of code</span>.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <Button className="h-12 px-8 bg-white text-black hover:bg-neutral-200 text-base font-medium rounded-full">
-                  Start Building
-                  <ArrowRight className="ml-2 h-4 w-4" />
+              <div className="flex flex-col sm:flex-row items-start gap-4 mb-20">
+                <Button className="h-12 px-8 bg-white text-black hover:bg-neutral-200 text-base font-semibold rounded-full group transition-all">
+                  Get Started for Free
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" className="h-12 px-8 border-white/10 bg-transparent text-white hover:bg-white/5 text-base font-medium rounded-full">
+                <Button variant="outline" className="h-12 px-8 border-white/10 bg-white/5 text-white hover:bg-white/10 text-base font-medium rounded-full transition-all">
                   Read Documentation
                 </Button>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-12 gap-y-6 opacity-40">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 w-full lg:w-auto">Integrates with</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-white/10 rounded flex items-center justify-center font-bold text-[10px]">L</div>
+                  <span className="text-sm font-medium">LangChain</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-white/10 rounded flex items-center justify-center font-bold text-[10px]">C</div>
+                  <span className="text-sm font-medium">CrewAI</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-white/10 rounded flex items-center justify-center font-bold text-[10px]">A</div>
+                  <span className="text-sm font-medium">AutoGen</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-white/10 rounded flex items-center justify-center font-bold text-[10px]">P</div>
+                  <span className="text-sm font-medium">PydanticAI</span>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -92,13 +142,13 @@ export default function LandingPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
               {[
                 { label: 'Latency', value: '<10ms', sub: 'Policy evaluation' },
-                { label: 'Throughput', value: '100k+', sub: 'Events per second' },
+                { label: 'Integrations', value: 'Any LLM', sub: 'LangChain, CrewAI, AutoGen' },
                 { label: 'Uptime', value: '99.99%', sub: 'SLA guaranteed' },
-                { label: 'Security', value: 'SOC 2', sub: 'Type II compliant' }
+                { label: 'Compliance', value: 'Audit Ready', sub: 'SOC2, GDPR, HIPAA' }
               ].map((stat, i) => (
-                <div key={i} className="py-12 pl-8 first:pl-0">
-                  <div className="text-3xl font-mono font-bold mb-1 tracking-tighter">{stat.value}</div>
-                  <div className="text-sm font-medium text-white mb-1">{stat.label}</div>
+                <div key={i} className="py-12 px-8 first:pl-0 group transition-all duration-300 hover:bg-white/[0.03]">
+                  <div className="text-3xl font-mono font-bold mb-1 tracking-tighter transition-colors group-hover:text-white">{stat.value}</div>
+                  <div className="text-sm font-medium text-neutral-200 mb-1">{stat.label}</div>
                   <div className="text-xs text-neutral-500">{stat.sub}</div>
                 </div>
               ))}
@@ -106,66 +156,86 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Value Prop Section */}
-        <section className="py-32 px-6">
+        {/* How It Works Section */}
+        <section id="how-it-works" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="grid lg:grid-cols-2 gap-20 items-start">
               <div>
-                <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-tight">
+                <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-12 leading-tight">
                   Security that doesn't
                   <br />
                   slow you down.
                 </h2>
-                <div className="space-y-8">
-                  <p className="text-lg text-neutral-400 leading-relaxed">
-                    Katyar sits between your agents and their tools, intercepting actions in real-time.
-                    Our high-performance policy engine evaluates requests in microseconds, ensuring
-                    security without compromising user experience.
-                  </p>
 
-                  <div className="space-y-4">
-                    {[
-                      { title: 'Zero-overhead Integration', desc: 'Drop-in SDKs for Python and TypeScript.' },
-                      { title: 'Real-time Guardrails', desc: 'Block PII and malicious prompts instantly.' },
-                      { title: 'Audit Everything', desc: 'Immutable logs for every agent action.' }
-                    ].map((item, i) => (
-                      <div key={i} className="flex gap-4">
-                        <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-white">{item.title}</h3>
-                          <p className="text-sm text-neutral-500">{item.desc}</p>
-                        </div>
+                <div className="space-y-12">
+                  {[
+                    { title: '01. Sign Up', desc: 'Create your workspace with Google or GitHub in 30 seconds.' },
+                    { title: '02. Get API Key', desc: 'Securely generate credentials for your agents from the dashboard.' },
+                    { title: '03. Wrap Your Agent', desc: 'Add 3 lines of code using our Python SDK or LangChain handler.' },
+                    { title: '04. Govern & Scale', desc: 'Watch actions live, create policies, and approve high-risk requests.' }
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-6">
+                      <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center flex-shrink-0 text-sm font-mono text-neutral-500">
+                        {i + 1}
                       </div>
-                    ))}
-                  </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                        <p className="text-neutral-400 leading-relaxed text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="relative">
+              <div className="relative sticky top-32">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-2xl" />
-                <div className="relative rounded-xl border border-white/10 bg-black overflow-hidden shadow-2xl">
-                  <Image
-                    src="/dashboard.png"
-                    alt="Katyar Dashboard"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40" />
+                <div className="relative rounded-xl border border-white/10 bg-black overflow-hidden shadow-2xl p-6">
+                  <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-4">
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-400/20" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-400/20" />
+                      <div className="w-3 h-3 rounded-full bg-green-400/20" />
+                    </div>
+                    <div className="text-[10px] font-mono text-neutral-500 uppercase">katyar.py</div>
+                  </div>
+                  <pre className="font-mono text-sm leading-relaxed overflow-x-auto">
+                    <code className="text-neutral-300">
+                      <span className="text-purple-400">from</span> katyar <span className="text-purple-400">import</span> Katyar<br /><br />
+                      kt = Katyar(api_key=<span className="text-green-400">"kt_live_xxx"</span>)<br /><br />
+                      <span className="text-blue-400">@kt.track</span><br />
+                      <span className="text-purple-400">def</span> <span className="text-yellow-400">my_agent</span>():<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-neutral-500"># Your existing agent code</span><br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-neutral-500"># All actions now go through Katyar</span><br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-400">pass</span>
+                    </code>
+                  </pre>
+                </div>
+
+                <div className="mt-8 flex items-center gap-4 px-6 text-sm text-neutral-500">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    LangChain Support
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    CrewAI Support
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    AutoGen Support
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Grid with Borders */}
+        {/* Features Grid */}
         <section id="features" className="border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 py-24">
             <div className="mb-20">
               <h2 className="text-4xl font-bold tracking-tight mb-4">Platform Capabilities</h2>
-              <p className="text-xl text-neutral-400 max-w-2xl">Everything you need to run agents in production with confidence.</p>
+              <p className="text-xl text-neutral-400 max-w-2xl">The complete infrastructure for AI agent governance and security.</p>
             </div>
 
             <div className="grid md:grid-cols-3 border-l border-t border-white/10">
@@ -173,32 +243,32 @@ export default function LandingPage() {
                 {
                   icon: Shield,
                   title: 'Security Guardrails',
-                  desc: 'Pre-configured scanners for prompt injection, PII, and secrets detection.'
+                  desc: 'Powered by LLM Guard. Blocks prompt injection, jailbreak attempts, and instruction hijacking.'
+                },
+                {
+                  icon: Lock,
+                  title: 'Data Privacy',
+                  desc: 'Detect and mask PII (emails, SSNs, credit cards) before sensitive data leaves your system.'
                 },
                 {
                   icon: Workflow,
                   title: 'Policy Engine',
-                  desc: 'Granular control over tool access, API calls, and resource usage.'
+                  desc: 'Granular control over tool access with Visual Policy Builder or Cedar Policy Language.'
                 },
                 {
                   icon: Eye,
                   title: 'Human Oversight',
-                  desc: 'Approval workflows for high-risk actions with full context review.'
+                  desc: 'Approval workflows for high-risk actions. Approve or deny directly in Slack or Dashboard.'
                 },
                 {
                   icon: Activity,
-                  title: 'Observability',
-                  desc: 'Real-time traces, metrics, and logs for every agent interaction.'
+                  title: 'Real-Time Audit',
+                  desc: 'Immutable logs of every agent action with full request/response inspection.'
                 },
                 {
                   icon: Server,
-                  title: 'Infrastructure',
-                  desc: 'Global edge network ensuring low latency policy evaluation.'
-                },
-                {
-                  icon: Code2,
-                  title: 'Developer Experience',
-                  desc: 'Typed SDKs, CLI tools, and a dashboard built for engineers.'
+                  title: 'Agent Gateway',
+                  desc: 'Secure proxy between agents and tools with WebSocket connections and low latency.'
                 }
               ].map((feature, i) => (
                 <div key={i} className="border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors group">
@@ -211,8 +281,157 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Dark CTA Section */}
-        <section className="py-32 px-6 border-t border-white/10 bg-neutral-900/10">
+        {/* Use Cases Grid */}
+        <section id="use-cases" className="border-t border-white/10 bg-neutral-900/10">
+          <div className="max-w-7xl mx-auto px-6 py-24">
+            <div className="mb-20">
+              <h2 className="text-4xl font-bold tracking-tight mb-4">Enterprise Use Cases</h2>
+              <p className="text-xl text-neutral-400 max-w-2xl">Proven governance for production AI systems across industries.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: 'Customer Service',
+                  case: 'Limit refund amounts and restrict AI data access to only authorized records.',
+                  icon: MessageSquare,
+                },
+                {
+                  title: 'Fintech',
+                  case: 'Ensure every transaction over $500 gets human approval before completion.',
+                  icon: Shield,
+                },
+                {
+                  title: 'Healthcare',
+                  case: 'Log all patient data access for HIPAA compliance and block any PII leaks.',
+                  icon: Lock,
+                },
+                {
+                  title: 'DevOps Automation',
+                  case: 'Require approval for production infrastructure changes or secret access.',
+                  icon: Server,
+                },
+                {
+                  title: 'Data Analysis',
+                  case: 'Enforce read-only policies and mask sensitive financial columns in queries.',
+                  icon: Search,
+                },
+                {
+                  title: 'Multi-Agent Systems',
+                  case: 'Isolate agents with least-privilege policies and track inter-agent chatter.',
+                  icon: Layers,
+                }
+              ].map((item, i) => (
+                <div key={i} className="p-8 rounded-xl border border-white/10 bg-black hover:bg-white/[0.02] transition-colors group">
+                  <div className="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-white/5">
+                    <item.icon className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{item.case}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 py-24">
+            <div className="mb-20 text-center">
+              <h2 className="text-4xl font-bold tracking-tight mb-4">Simple, Usage-Based Pricing</h2>
+              <p className="text-xl text-neutral-400">Pay for what you use. No surprises.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 border-l border-t border-white/10">
+              {[
+                {
+                  name: 'Free',
+                  price: '$0',
+                  desc: 'For trials and small projects.',
+                  features: ['1,000 actions/mo', '1 Workspace', '7 days retention', 'Basic policies']
+                },
+                {
+                  name: 'Pro',
+                  price: '$99',
+                  desc: 'For production workloads.',
+                  features: ['50,000 actions/mo', '5 Workspaces', '30 days retention', 'Slack HITL', 'Cedar policies']
+                },
+                {
+                  name: 'Team',
+                  price: '$499',
+                  desc: 'For scaling teams.',
+                  features: ['500,000 actions/mo', 'Unlimited Workspaces', '90 days retention', 'SSO (SAML)', 'Audit Export']
+                },
+                {
+                  name: 'Enterprise',
+                  price: 'Custom',
+                  desc: 'For advanced requirements.',
+                  features: ['Unlimited actions', 'VPC Deployment', '7 yrs retention', '99.99% SLA', 'Dedicated support']
+                }
+              ].map((plan, i) => (
+                <div key={i} className="border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors flex flex-col">
+                  <h3 className="text-sm font-mono text-neutral-500 uppercase mb-4 tracking-widest">{plan.name}</h3>
+                  <div className="mb-1">
+                    <span className="text-4xl font-bold">{plan.price}</span>
+                    {plan.price !== 'Custom' && <span className="text-sm text-neutral-500 ml-1">/mo</span>}
+                  </div>
+                  <p className="text-sm text-neutral-500 mb-8">{plan.desc}</p>
+
+                  <ul className="space-y-4 mb-10 flex-1">
+                    {plan.features.map((feature, j) => (
+                      <li key={j} className="flex items-center gap-2 text-sm text-neutral-400">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-neutral-500" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button className={`${plan.name === 'Pro' ? 'bg-white text-black' : 'bg-transparent border border-white/10 text-white hover:bg-white/5'} h-10 w-full rounded-full text-sm font-medium`}>
+                    {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="border-t border-white/10 bg-neutral-900/10">
+          <div className="max-w-3xl mx-auto px-6 py-24">
+            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">Frequently Asked Questions</h2>
+            <div className="divide-y divide-white/10">
+              {[
+                { q: "What is an 'Agent Action'?", a: "An action is counted each time your agent calls a tool through Katyar, gets a policy decision, or triggers a human-in-the-loop request." },
+                { q: "Does Katyar support custom agents?", a: "Yes. Our Python SDK decorator works with any custom agent or function, in addition to native support for frameworks like LangChain." },
+                { q: "What about performance/latency?", a: "Our policy engine is optimized for high performance, typically evaluating rules in under 10ms. Policy-only checks can also run asynchronously." },
+                { q: "Is my data used for training?", a: "No. We never use customer data to train models. Your data is only used to provide the governance services you configure." },
+                { q: "Can I host Katyar in my own VPC?", a: "Yes, self-hosting and VPC deployments are available as part of our Enterprise plan. Contact us for details." }
+              ].map((faq, i) => (
+                <div key={i} className="py-2">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full py-6 flex items-center justify-between text-left hover:text-white transition-colors group"
+                  >
+                    <span className="font-medium text-white">{faq.q}</span>
+                    <Plus className={`w-5 h-5 text-neutral-500 group-hover:text-white transition-transform ${openFaq === i ? 'rotate-45' : ''}`} />
+                  </button>
+                  {openFaq === i && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="pb-6 text-neutral-400 text-sm leading-relaxed"
+                    >
+                      {faq.a}
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-32 px-6 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
               Start governing your
@@ -228,19 +447,19 @@ export default function LandingPage() {
               </Button>
             </div>
             <p className="mt-8 text-sm text-neutral-500">
-              Free tier includes 10k monthly events using hosted cloud.
+              Free tier includes 1,000 monthly actions. No credit card required.
             </p>
           </div>
         </section>
 
-        {/* Detailed Footer */}
+        {/* Footer */}
         <footer className="border-t border-white/10 bg-black pt-20 pb-10 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-20">
               <div className="col-span-2">
                 <div className="flex items-center gap-2 font-bold text-xl tracking-tight mb-6">
                   <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
-                    <span className="text-black text-xs">K</span>
+                    <span className="text-black text-xs font-bold">K</span>
                   </div>
                   Katyar
                 </div>
@@ -263,10 +482,9 @@ export default function LandingPage() {
               <div>
                 <h4 className="font-semibold text-white mb-6">Product</h4>
                 <ul className="space-y-4 text-sm text-neutral-500">
-                  <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Changelog</a></li>
+                  <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
+                  <li><a href="#use-cases" className="hover:text-white transition-colors">Use Cases</a></li>
+                  <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
                 </ul>
               </div>
 
@@ -276,17 +494,15 @@ export default function LandingPage() {
                   <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">API Reference</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">SDKs</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Status</a></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-semibold text-white mb-6">Company</h4>
                 <ul className="space-y-4 text-sm text-neutral-500">
+                  <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">About</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
                 </ul>
               </div>
             </div>
@@ -296,7 +512,6 @@ export default function LandingPage() {
               <div className="flex gap-8">
                 <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" className="hover:text-white transition-colors">Security Policy</a>
               </div>
             </div>
           </div>
