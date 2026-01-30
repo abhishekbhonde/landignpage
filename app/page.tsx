@@ -61,7 +61,7 @@ export default function LandingPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+        <section className="pt-28 pb-16 px-6 relative overflow-hidden">
           {/* Background Effects */}
           <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] pointer-events-none" />
           <div className="absolute -top-[25%] -left-[10%] w-[70%] h-[70%] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
@@ -73,13 +73,13 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-4xl"
+              className="max-w-5xl"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-neutral-300 mb-8 hover:bg-white/10 transition-colors cursor-default"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-neutral-300 mb-6 hover:bg-white/10 transition-colors cursor-default"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -90,20 +90,19 @@ export default function LandingPage() {
                 </span>
               </motion.div>
 
-              <h1 className="text-[56px] lg:text-[88px] font-bold leading-[1.02] tracking-tighter mb-8">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter mb-10">
                 Control what your AI agents
-                <br />
-                <span className="bg-gradient-to-b from-neutral-400 to-neutral-600 bg-clip-text text-transparent">
+                <span className="block mt-4 bg-gradient-to-b from-neutral-400 to-neutral-600 bg-clip-text text-transparent">
                   can do before they do it.
                 </span>
               </h1>
 
-              <p className="text-xl text-neutral-400 max-w-2xl mb-12 leading-relaxed font-light">
+              <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mb-10 leading-relaxed font-light">
                 Katyar is a security gateway for AI agents — authenticate, authorize, audit, and approve every action.
                 Run a secure, compliant AI agent infrastructure in <span className="text-white">3 lines of code</span>.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start gap-4 mb-20">
+              <div className="flex flex-col sm:flex-row items-start gap-4 mb-16">
                 <Button className="h-12 px-8 bg-white text-black hover:bg-neutral-200 text-base font-semibold rounded-full group transition-all">
                   Get Started for Free
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -113,7 +112,7 @@ export default function LandingPage() {
                 </Button>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-12 gap-y-6 opacity-40">
+              <div className="flex flex-wrap items-center gap-x-10 gap-y-6 opacity-40">
                 <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 w-full lg:w-auto">Integrates with</span>
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-white/10 rounded flex items-center justify-center font-bold text-[10px]">L</div>
@@ -146,7 +145,7 @@ export default function LandingPage() {
                 { label: 'Uptime', value: '99.99%', sub: 'SLA guaranteed' },
                 { label: 'Compliance', value: 'Audit Ready', sub: 'SOC2, GDPR, HIPAA' }
               ].map((stat, i) => (
-                <div key={i} className="py-12 px-8 first:pl-0 group transition-all duration-300 hover:bg-white/[0.03]">
+                <div key={i} className="py-10 px-8 first:pl-0 group transition-all duration-300 hover:bg-white/[0.03]">
                   <div className="text-3xl font-mono font-bold mb-1 tracking-tighter transition-colors group-hover:text-white">{stat.value}</div>
                   <div className="text-sm font-medium text-neutral-200 mb-1">{stat.label}</div>
                   <div className="text-xs text-neutral-500">{stat.sub}</div>
@@ -157,7 +156,7 @@ export default function LandingPage() {
         </section>
 
         {/* How It Works Section */}
-        <section id="how-it-works" className="py-32 px-6">
+        <section id="how-it-works" className="py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-20 items-start">
               <div>
@@ -232,8 +231,8 @@ export default function LandingPage() {
 
         {/* Features Grid */}
         <section id="features" className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-24">
-            <div className="mb-20">
+          <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="mb-16">
               <h2 className="text-4xl font-bold tracking-tight mb-4">Platform Capabilities</h2>
               <p className="text-xl text-neutral-400 max-w-2xl">The complete infrastructure for AI agent governance and security.</p>
             </div>
@@ -271,7 +270,7 @@ export default function LandingPage() {
                   desc: 'Secure proxy between agents and tools with WebSocket connections and low latency.'
                 }
               ].map((feature, i) => (
-                <div key={i} className="border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors group">
+                <div key={i} className="border-r border-b border-white/10 p-8 hover:bg-white/[0.02] transition-colors group">
                   <feature.icon className="w-8 h-8 text-neutral-400 mb-6 group-hover:text-white transition-colors" strokeWidth={1.5} />
                   <h3 className="text-lg font-bold mb-3">{feature.title}</h3>
                   <p className="text-neutral-400 leading-relaxed text-sm">{feature.desc}</p>
@@ -283,8 +282,8 @@ export default function LandingPage() {
 
         {/* Use Cases Grid */}
         <section id="use-cases" className="border-t border-white/10 bg-neutral-900/10">
-          <div className="max-w-7xl mx-auto px-6 py-24">
-            <div className="mb-20">
+          <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="mb-16">
               <h2 className="text-4xl font-bold tracking-tight mb-4">Enterprise Use Cases</h2>
               <p className="text-xl text-neutral-400 max-w-2xl">Proven governance for production AI systems across industries.</p>
             </div>
@@ -322,7 +321,7 @@ export default function LandingPage() {
                   icon: Layers,
                 }
               ].map((item, i) => (
-                <div key={i} className="p-8 rounded-xl border border-white/10 bg-black hover:bg-white/[0.02] transition-colors group">
+                <div key={i} className="p-6 rounded-xl border border-white/10 bg-black hover:bg-white/[0.02] transition-colors group">
                   <div className="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-white/5">
                     <item.icon className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
                   </div>
@@ -336,8 +335,8 @@ export default function LandingPage() {
 
         {/* Pricing Section */}
         <section id="pricing" className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-24">
-            <div className="mb-20 text-center">
+          <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="mb-16 text-center">
               <h2 className="text-4xl font-bold tracking-tight mb-4">Simple, Usage-Based Pricing</h2>
               <p className="text-xl text-neutral-400">Pay for what you use. No surprises.</p>
             </div>
@@ -369,7 +368,7 @@ export default function LandingPage() {
                   features: ['Unlimited actions', 'VPC Deployment', '7 yrs retention', '99.99% SLA', 'Dedicated support']
                 }
               ].map((plan, i) => (
-                <div key={i} className="border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors flex flex-col">
+                <div key={i} className="border-r border-b border-white/10 p-8 hover:bg-white/[0.02] transition-colors flex flex-col">
                   <h3 className="text-sm font-mono text-neutral-500 uppercase mb-4 tracking-widest">{plan.name}</h3>
                   <div className="mb-1">
                     <span className="text-4xl font-bold">{plan.price}</span>
@@ -431,7 +430,7 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-32 px-6 border-t border-white/10">
+        <section className="py-24 px-6 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
               Start governing your
