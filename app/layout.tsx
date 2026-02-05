@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -100,7 +105,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-black text-white`}
+        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-black text-white`}
         suppressHydrationWarning
       >
         {children}
