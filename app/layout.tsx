@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Spectral } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,6 +11,13 @@ const inter = Inter({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+  display: 'swap',
+});
+
+const spectral = Spectral({
+  subsets: ["latin"],
+  variable: "--font-spectral",
+  weight: ["400", "500", "600", "700"],
   display: 'swap',
 });
 
@@ -105,7 +112,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-black text-white`}
+        className={`${inter.variable} ${outfit.variable} ${spectral.variable} font-sans antialiased bg-black text-white`}
         suppressHydrationWarning
       >
         {children}

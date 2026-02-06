@@ -1,33 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
 
 export function Quotes() {
     return (
-        <section className="py-32 relative overflow-hidden bg-white text-black">
-            <div className="container mx-auto px-4 relative z-10">
+        <section className="py-32 relative overflow-hidden">
+            {/* Subtle Grid Background */}
+            <div className="absolute inset-0 bg-zinc-950">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
+            </div>
+
+            {/* Soft Gradient Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/8 rounded-full blur-[150px]" />
+
+            <div className="container relative z-10 mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <p className="text-3xl md:text-5xl font-bold leading-tight mb-8">
-                            "AI systems should be overseen by people, rather than by automation, to prevent harmful outcomes."
+                        {/* Quote Icon */}
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 mb-10">
+                            <Quote className="w-8 h-8 text-emerald-400" />
+                        </div>
+
+                        <p className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-10 text-white">
+                            "AI systems should be overseen by{" "}
+                            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                                people
+                            </span>
+                            , rather than by automation, to prevent harmful outcomes."
                         </p>
-                        <p className="text-xl md:text-2xl text-zinc-600 font-medium tracking-wide items-center justify-center flex gap-2">
-                            <span className="w-8 h-[1px] bg-zinc-400 inline-block"></span>
-                            EU AI Act, Recital 48
-                            <span className="w-8 h-[1px] bg-zinc-400 inline-block"></span>
-                        </p>
+
+                        <div className="flex items-center justify-center gap-4">
+                            <div className="w-12 h-px bg-zinc-700" />
+                            <p className="text-lg text-zinc-400 font-medium">
+                                EU AI Act, Recital 48
+                            </p>
+                            <div className="w-12 h-px bg-zinc-700" />
+                        </div>
                     </motion.div>
                 </div>
             </div>
-
-            {/* Background Decoration */}
-            <div className="absolute top-0 left-0 w-32 h-32 md:w-64 md:h-64 bg-zinc-100 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-zinc-200 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
         </section>
     );
 }

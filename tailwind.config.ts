@@ -53,6 +53,7 @@ const config: Config = {
             fontFamily: {
                 sans: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
                 outfit: ["var(--font-outfit)", "ui-sans-serif", "system-ui"],
+                spectral: ["var(--font-spectral)", "ui-serif", "Georgia", "serif"],
             },
             keyframes: {
                 "accordion-down": {
